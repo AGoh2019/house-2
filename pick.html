@@ -1,0 +1,92 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #todo {
+      width: 300px;
+      height: 300px;
+      margin: 30px;
+      padding: 10px;
+    }
+
+    #answer {
+      font-size: 90px;
+      font-family: 'Anton', sans-serif;
+    }
+
+    #list {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="todo">
+      <button onclick="pick()">Pick a number</button>
+      <input id="task" type="text">
+
+      <div id="answer">
+      </div>
+
+        <ol id="list">
+          <li>something</li>
+        </ol>  
+  </div>  
+</body>
+
+<script>
+  var list = [];
+  var json_class_list = {
+    0: "vincent",
+    1: "andrew goh", 
+    2: "isaac",
+    3: "syafii",
+    4: "jonathan",
+    5: "darrek",
+    6: "kimberly",
+    7: "yingqi",
+    8: "dexter",
+    9: "serene",
+    10: "cara",
+    11: "jeremy",
+    12: "martin",
+    13: "farhan",
+    14: "char",
+    15: "jenny",
+    16: "luqman",
+    17: "andrew oh"
+  }
+
+  function pick(){
+    var max = 18;
+    var calculation = (Math.floor(Math.random() * Math.floor(max)))
+    var node = document.createElement("li");                 // Create a <li> node
+    var textnode = document.createTextNode(calculation + " - " + json_class_list[calculation]); 
+    node.appendChild(textnode);
+    document.getElementById("list").appendChild(node);
+  }
+
+  function add_to_list(){
+    value = document.getElementById("task").value
+    list.push(value)
+    this.display_list()
+  }
+
+  function display_list(){
+    document.getElementById("list").innerHTML = ""
+    for (i = 0; i < list.length; i++) { 
+      var node = document.createElement("li");                 // Create a <li> node
+      var textnode = document.createTextNode(list[i]); 
+      node.appendChild(textnode);
+      document.getElementById("list").appendChild(node);
+    }
+  }
+
+  window.onLoad = display_list();
+  
+</script>
+</html>
